@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:/_Guy/Private/Workspace/Python/Cats&amp;Dogs/.idea/Cats&amp;Dogs.iml" filepath="C:/_Guy/Private/Workspace/Python/Cats&amp;Dogs/.idea/Cats&amp;Dogs.iml" />
-      <module fileurl="file://C:/_Guy/Private/Workspace/Python/lf2AI/.idea/lf2AI.iml" filepath="C:/_Guy/Private/Workspace/Python/lf2AI/.idea/lf2AI.iml" />
+      <module fileurl="file://C:\_Guy\Private\Workspace\Python\Cats&amp;Dogs\.idea\Cats&amp;Dogs.iml" filepath="C:\_Guy\Private\Workspace\Python\Cats&amp;Dogs\.idea\Cats&amp;Dogs.iml" />
+      <module fileurl="file://C:\_Guy\Private\Workspace\Python\lf2AI\.idea\lf2AI.iml" filepath="C:\_Guy\Private\Workspace\Python\lf2AI\.idea\lf2AI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/lf2ai.iml" filepath="$PROJECT_DIR$/.idea/lf2ai.iml" />
     </modules>
   </component>
 </project>
