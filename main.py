@@ -1,8 +1,8 @@
 from keyboard import PressKey
 from keyboard import ReleaseKey
-from ScreenHelper import ScreenHelper
-from createDataset import capture_dataset
-from neural_network import *
+# from ScreenHelper import ScreenHelper
+# from createDataset import capture_dataset
+# from neural_network import *
 import time
 
 # numbers
@@ -77,11 +77,22 @@ def kick_jump_left():
     time.sleep(1)
 
 
+def explode():
+    PressKey(key_guard)
+    PressKey(key_jump)
+    PressKey(key_up)
+    time.sleep(1)
+    ReleaseKey(key_guard)
+    ReleaseKey(key_jump)
+    ReleaseKey(key_up)
+    time.sleep(1)
+
+
 data_filename = "C:\_Guy\Private\Workspace\Python\lf2AI\screenshots_as_np_arrays.npy"
 
 # flags
 capture_mode = False
-train_autoencoder = True
+train_autoencoder = False
 show_capture = False
 
 
@@ -130,8 +141,10 @@ if train_autoencoder:
     autoencoder.fit_generator(datagen.flow(data, data, batch_size=32), samples_per_epoch=50, epochs=10)
 
 print("goodbye")
-
-# for i in range(0, 1):
-#    kick_jump_left()
-#    kick_jump_right()
-#     captureScreen()
+time.sleep(5)
+for i in range(0, 99):
+    for j in range(0, 4):
+        time.sleep(2)
+        explode()
+    kick_jump_right()
+    kick_jump_left()
