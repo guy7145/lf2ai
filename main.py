@@ -1,3 +1,5 @@
+from keras.preprocessing.image import ImageDataGenerator
+
 from keyboard import PressKey
 from keyboard import ReleaseKey
 # from ScreenHelper import ScreenHelper
@@ -88,7 +90,6 @@ def explode():
     time.sleep(1)
 
 
-data_filename = "C:\_Guy\Private\Workspace\Python\lf2AI\screenshots_as_np_arrays.npy"
 
 # flags
 capture_mode = False
@@ -123,6 +124,10 @@ if capture_mode:
             ScreenHelper.show_image(arr)
 
 if train_autoencoder:
+
+    print("generating model...")
+    autoencoder = generate_autoencoder()
+
     print("loading data...")
     data = capture_dataset.load_data(data_filename)
 
@@ -138,7 +143,7 @@ if train_autoencoder:
     print("generating model...")
     autoencoder = generate_autoencoder()
     print("training model...")
-    autoencoder.fit_generator(datagen.flow(data, data, batch_size=32), samples_per_epoch=50, epochs=10)
+    autoencoder.fit_generator(datagen.flow(data, data, batch_size=32), epochs=10, steps_per_epoch=50)
 
 print("goodbye")
 time.sleep(5)
