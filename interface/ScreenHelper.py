@@ -7,6 +7,8 @@ import time
 
 class ScreenHelper(object):
 
+    captures = list()
+
     def __init__(self):
         self.WindowName = "Little Fighter 2"
         self.lf2wnd = win32gui.FindWindow(None, self.WindowName)
@@ -16,10 +18,16 @@ class ScreenHelper(object):
     def switch_focus(self):
         win32gui.SetForegroundWindow(self.lf2wnd)
 
-    def capture_screen(self):
+    def capture(self):
         img = ImageGrab.grab(self.captureFrame)
-        img_np = np.array(img) # shape = (578, 800, 3)
-        return img_np
+        # img_np = np.array(img) # shape = (578, 800, 3)
+        # self.captures.append(img_np)
+        self.captures.append(img)
+        return
+
+    def cast_to_np(self):
+        self.captures = [np(capt) for capt in self.captures]
+        return self.captures
 
     @staticmethod
     def show_image(img_np):

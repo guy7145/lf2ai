@@ -28,6 +28,7 @@ def generate_autoencoder():
     # return model
 
     input_img = Input(shape=(800, 578, 3))  # adapt this if using `channels_first` image data format
+    x = Dense()
 
     x = Conv2D(16, (3, 3), activation='relu', padding='same')(input_img)
     x = MaxPooling2D((2, 2), padding='same')(x)
