@@ -35,11 +35,11 @@ VK_j = 0x4A
 VK_k = 0x4B
 
 
-
-
 # C struct definitions
 
+
 wintypes.ULONG_PTR = wintypes.WPARAM
+
 
 class MOUSEINPUT(ctypes.Structure):
     _fields_ = (("dx",          wintypes.LONG),
@@ -48,6 +48,7 @@ class MOUSEINPUT(ctypes.Structure):
                 ("dwFlags",     wintypes.DWORD),
                 ("time",        wintypes.DWORD),
                 ("dwExtraInfo", wintypes.ULONG_PTR))
+
 
 class KEYBDINPUT(ctypes.Structure):
     _fields_ = (("wVk",         wintypes.WORD),
@@ -64,10 +65,12 @@ class KEYBDINPUT(ctypes.Structure):
             self.wScan = user32.MapVirtualKeyExW(self.wVk,
                                                  MAPVK_VK_TO_VSC, 0)
 
+
 class HARDWAREINPUT(ctypes.Structure):
     _fields_ = (("uMsg",    wintypes.DWORD),
                 ("wParamL", wintypes.WORD),
                 ("wParamH", wintypes.WORD))
+
 
 class INPUT(ctypes.Structure):
     class _INPUT(ctypes.Union):
@@ -78,7 +81,9 @@ class INPUT(ctypes.Structure):
     _fields_ = (("type",   wintypes.DWORD),
                 ("_input", _INPUT))
 
+
 LPINPUT = ctypes.POINTER(INPUT)
+
 
 def _check_count(result, func, args):
     if result == 0:
@@ -92,16 +97,19 @@ user32.SendInput.argtypes = (wintypes.UINT, # nInputs
 
 # Functions
 
+
 def PressKey(hexKeyCode):
     x = INPUT(type=INPUT_KEYBOARD,
               ki=KEYBDINPUT(wVk=hexKeyCode))
     user32.SendInput(1, ctypes.byref(x), ctypes.sizeof(x))
+
 
 def ReleaseKey(hexKeyCode):
     x = INPUT(type=INPUT_KEYBOARD,
               ki=KEYBDINPUT(wVk=hexKeyCode,
                             dwFlags=KEYEVENTF_KEYUP))
     user32.SendInput(1, ctypes.byref(x), ctypes.sizeof(x))
+
 
 def AltTab():
     """Press Alt+Tab and hold Alt key for 2 seconds

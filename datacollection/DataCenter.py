@@ -1,7 +1,7 @@
 from macpath import join
 
-import pyHook
-import pythoncom
+# import pyHook
+# import pythoncom
 
 from datacollection.DataFile import DataFile
 from interface.KeyboardHelper import KeyboardHelper

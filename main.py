@@ -1,7 +1,12 @@
-from datacollection.DataCenter import DataCenter
+from VirtualPlayer import VirtualPlayer
+from interface.ScreenHelper import ScreenHelper
 
-dc = DataCenter()
-dc.start_collecting()
+sh = ScreenHelper()
+
+vp = VirtualPlayer(7)
+vp.focus()
+vp.play()
+# sh.show_image(vp.see())
 
 #
 # data_filename = "screenshots_as_np_arrays.npy"
